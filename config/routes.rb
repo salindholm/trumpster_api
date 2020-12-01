@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'quotes/show'
+  resources :quotes, only: [:show]
 end
