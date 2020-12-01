@@ -5,9 +5,6 @@ class QuotesController < ApplicationController
     if params[:id] == "random"
       url = "#{API_URL}/random/quote"
       result = RestClient.get(url)
-      
-      binding.pry
-      
     end
     quote = JSON.parse(result.body)
     render json: format_json_response(quote)

@@ -8,11 +8,11 @@ RSpec.describe "GET /quotes/:id", type: :request do
 
     it "is expected to return a quote" do
       expected_response_body = {
-        "date": '',
-        "source": '',
-        "quote_of_the_day": ''
+        "date": "",
+        "source": "",
+        "quote_of_the_day": "",
       }
-      
+
       expect(JSON.parse(response.body)).to eq expected_response_body
     end
 
