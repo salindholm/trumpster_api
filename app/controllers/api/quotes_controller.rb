@@ -1,15 +1,14 @@
 class Api::QuotesController < ApplicationController
-  API_URL = 'https://api.tronalddump.io'.freeze
+  API_URL = 'https://api.tronalddump.io'
 
   def show
-    if params[:id] == 'random'
+    if params[:id] == "random"
       url = "#{API_URL}/random/quote"
       result = RestClient.get(url)
     end
     quote = JSON.parse(result.body)
     render json: format_json_response(quote)
   end
-
   private
 
   def format_json_response(obj)
@@ -20,3 +19,4 @@ class Api::QuotesController < ApplicationController
     }
   end
 end
+ 
