@@ -3,7 +3,7 @@ Coveralls.wear_merged!('rails')
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
 
@@ -15,7 +15,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-
+WebMock.disable_net_connect!(allow_localhost: true)
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
@@ -23,4 +23,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
   config.include Shoulda::Matchers::ActiveRecord, type: :model
+  config.before(:each) do
+    fixture = File.open("#{fixture_path}/random_quote.json").read
+    stub_request(:get, 'https://api.tronalddump.io/random/quote')
+      .to_return(status: 200, body: fixture, headers: {})
+  end
 end
