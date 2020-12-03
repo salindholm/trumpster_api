@@ -1,5 +1,5 @@
 class Api::QuotesController < ApplicationController
-  API_URL = 'https://api.tronalddump.io'.freeze
+  API_URL = "https://api.tronalddump.io".freeze
 
   def show
     if params[:id] == 'random'
@@ -16,7 +16,7 @@ class Api::QuotesController < ApplicationController
     {
       date: DateTime.parse(obj['appeared_at']).strftime('%B %Y'),
       source: obj['_embedded']['source'][0]['url'],
-      random_quote: obj['value']
+      random_quote: obj['value'],
     }
   end
 end
