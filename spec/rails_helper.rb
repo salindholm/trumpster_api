@@ -23,13 +23,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
   config.include Shoulda::Matchers::ActiveRecord, type: :model
-<<<<<<< HEAD
-=======
   config.include ResponseJSON 
   config.before(:each) do
     fixture = File.open("#{fixture_path}/random_quote.json").read
     stub_request(:get, 'https://api.tronalddump.io/random/quote')
       .to_return(status: 200, body: fixture, headers: {})
   end
->>>>>>> c31a4dc7d6f665b065eefc2db6fc706530debba0
 end
