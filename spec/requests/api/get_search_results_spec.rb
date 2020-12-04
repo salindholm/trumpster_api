@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe "GET /api/quotes", type: :request do
-  let(:headers) { { HTTP_ACCEPT: "application/json" } }
+  let!(:registered_user) { create(:user) }
+  let!(:registered_user_headers) { registered_user.create_new_auth_token }
 
   describe 'with "barack" as a query parameter' do
     before do
@@ -9,7 +10,7 @@ RSpec.describe "GET /api/quotes", type: :request do
         params: {
           query: "barack",
         },
-        headers: headers
+        headers: registered_user_headers
     end
 
     it 'is expected to return a list of quotes that contains word "barack"' do

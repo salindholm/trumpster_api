@@ -1,4 +1,6 @@
 class Api::QuotesController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+
   API_URL = "https://api.tronalddump.io".freeze
 
   def show
