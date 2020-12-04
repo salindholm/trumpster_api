@@ -4,5 +4,3 @@ Rails.application.routes.draw do
     resources :quotes, only: [:show, :index]
   end
 end
-
-# http://api.tronalddump.io/search/quote?query=

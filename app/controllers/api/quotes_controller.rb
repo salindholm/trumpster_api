@@ -11,9 +11,12 @@ class Api::QuotesController < ApplicationController
   end
 
   def index
-    url = "#{API_URL}/search/quote"
-    result = RestClient.get(url, params: { query: params["query"] })
-    binding.pry
+    if params[:query] = params["query"]
+      url = "#{API_URL}/search/quote"
+      result = RestClient.get(url, params: { query: params["query"] })
+    end
+    quotes = JSON.parse(result.body)["_embedded"]["quotes"]
+    render json: format_json_search_results(quotes)
   end
 
   private
@@ -23,6 +26,17 @@ class Api::QuotesController < ApplicationController
       date: DateTime.parse(obj["appeared_at"]).strftime("%B %Y"),
       source: obj["_embedded"]["source"][0]["url"],
       random_quote: obj["value"],
+    }
+  end
+
+  def format_json_search_results(quotes)
+    quotes.map { |quote|
+      {
+        id: (quotes.index(quote) + 1),
+        date: DateTime.parse(quote["appeared_at"]).strftime("%B %Y"),
+        source: quote["value"],
+        quote: quote["_embedded"]["source"][0]["url"],
+      }
     }
   end
 end
