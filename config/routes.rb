@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount_devise_token_auth_for "User", at: "api/auth", skip: [:omniauth_callbacks]
   namespace :api do
-    resources :quotes, only: [:show]
+    resources :quotes, only: [:show, :index]
   end
 end
+
+# http://api.tronalddump.io/search/quote?query=
