@@ -13,7 +13,7 @@ class Api::SubscriptionsController < ApplicationController
       source: params[:stripeToken],
       description: "For subscription to awesome website"
     )
-    charge = Stripe:Charge.create(
+    charge = Stripe::Charge.create(
       customer: customer.id,
       amount: 500,
       currency: 'sek'
