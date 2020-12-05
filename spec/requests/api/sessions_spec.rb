@@ -7,11 +7,11 @@ RSpec.describe "POST /api/auth/sign_in", type: :request do
     {
       "data" => {
         "allow_password_change" => false,
-        "email" => "user@test.com",
-        "id" => 38,
+        "email" => user.email,
+        "id" => user.id,
         "provider" => "email",
         "subscriber" => false,
-        "uid" => "user@test.com",
+        "uid" => user.email,
       },
     }
   end
