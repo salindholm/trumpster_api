@@ -40,8 +40,7 @@ module TrumpsterApi
       generate.request_specs false
     end
 
-    config.stripe.publishable_key = Rails.application.credentials.stripe[ :publishable_key ]
-    config.stripe.secret_key = Rails.application.credentials.stripe[ :secret_key ]
+    config.stripe.publishable_key = Rails.application.credentials.stripe[:publishable_key]
+    config.stripe.secret_key = Rails.application.credentials.stripe[:secret_key]
   end
 end
-
