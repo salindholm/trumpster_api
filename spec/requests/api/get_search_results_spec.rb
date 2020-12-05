@@ -18,14 +18,14 @@ RSpec.describe "GET /api/quotes", type: :request do
         {
           "id" => 1,
           "date" => "August 2012",
-          "source" => "An 'extremely credible source' has called my office and told me that Barack Obama's birth certificate is a fraud.",
-          "quote" => "https://twitter.com/realdonaldtrump/status/232572505238433794",
+          "quote" => "An 'extremely credible source' has called my office and told me that Barack Obama's birth certificate is a fraud.",
+          "source" => "https://twitter.com/realdonaldtrump/status/232572505238433794",
         },
         {
           "id" => 2,
           "date" => "November 2015",
-          "source" => "Marco Rubio would keep Barack Obama’s executive order on amnesty intact. See article. Cannot be President.\n\n  https://t.co/JW5f8OouyA",
-          "quote" => "https://twitter.com/realDonaldTrump/status/661570281060835328",
+          "quote" => "Marco Rubio would keep Barack Obama's executive order on amnesty intact. See article. Cannot be President.\n\n  https://t.co/JW5f8OouyA",
+          "source" => "https://twitter.com/realDonaldTrump/status/661570281060835328",
         },
       ].as_json
 
