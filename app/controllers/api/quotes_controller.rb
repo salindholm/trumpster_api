@@ -36,8 +36,8 @@ class Api::QuotesController < ApplicationController
       {
         id: (quotes.index(quote) + 1),
         date: DateTime.parse(quote["appeared_at"]).strftime("%B %Y"),
-        source: quote["value"],
-        quote: quote["_embedded"]["source"][0]["url"],
+        quote: quote["value"],
+        source: quote["_embedded"]["source"][0]["url"],
       }
     }
   end
