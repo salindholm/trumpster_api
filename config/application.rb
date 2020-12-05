@@ -42,5 +42,3 @@ module TrumpsterApi
     end
   end
 end
-
-
