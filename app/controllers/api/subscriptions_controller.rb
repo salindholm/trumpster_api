@@ -3,7 +3,6 @@ class Api::SubscriptionsController < ApplicationController
 
   def create
     payment_status = perform_payment
-
     if payment_status
       current_user.update_attribute(:subscriber, true)
       render json: { message: "HUUUUUGGGEEEE Thanks for your money, now you are a REAL Trumpscriber!!", paid: true }
@@ -22,7 +21,7 @@ class Api::SubscriptionsController < ApplicationController
     )
     charge = Stripe::Charge.create(
       customer: customer.id,
-      amount: 20,
+      amount: 300,
       currency: "sek",
     )
     charge.paid
